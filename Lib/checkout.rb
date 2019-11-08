@@ -1,22 +1,23 @@
 class Checkout
-attr_accessor :items
+  attr_accessor :items, :scanned
 
-#  have the items available for reference
-def initialize
-  @items = [
-    {product:'Banana', cost: '£0.75'},
-    {product: 'Bread', cost: '£1.10'}
-  ]
-end
-#  find an item by product name
-def find_item(product)
-  @items.find{|item| item[:product] == product }
-end
-end
+  #  have the items available for reference
+  def initialize
+    @items = [
+      {product:'Banana', cost: '£0.75'},
+      {product: 'Bread', cost: '£1.10'}
+    ]
+    @scanned = []
+  end
+  #  find an item by product name
+  def find_item(product)
+    @items.find{|item| item[:product] == product }
+  end
 
-# def scan(price)
-#   @items.find{|item| item[:cost] == cost}
-# end
+  def scan(product)
+  @scanned << @items.find{|item| item[:product] == product}
+  end
+end
 
 # As a shopper
 # So I know how much an item costs
